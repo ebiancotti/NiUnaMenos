@@ -3,7 +3,7 @@ class Agresion {
 
 	var lugar
 	var agresor
-	var palabras = #{}
+	var palabras = []
 		
 	constructor(_lugar, _agresor, _palabras){
 
@@ -13,9 +13,18 @@ class Agresion {
 	
 }
 
-	
+	method esGrave(){
+		return palabras.any({unaPalabra => palabrasImperdonables.EsImperdonable(unaPalabra)})
+	}
+}
 
+	object palabrasImperdonables {
 
+	var imperdonables =["perra", "matar"]
 
+	method EsImperdonable(palabra){
+		return imperdonables.contains(palabra)
+	}
 
 }
+

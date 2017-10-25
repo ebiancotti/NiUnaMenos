@@ -1,6 +1,10 @@
+import Agresiones.*
 
-test "testX" {
+test "si la agresion contiene palabras imperdonables es grave" {
 
-	assert.that(true)
+	var agresion = new Agresion("conur", "brian", ["perra", "sos"])
+
+
+	assert.that(agresion.esGrave())
 
 }
