@@ -14,7 +14,7 @@ describe "test de Denuncias" {
 		agresionFisica = new AgresionFisica("paternal", "jony", [ "perra" ], "palo")
 		agresionFisicaIgnea = new AgresionFisica("paternal", "jony", [ "perra"
 		], "combustible") 
-		roberta = new Persona()
+		roberta = new Persona(["pepe","brian", "jose"])
 			}
 
 	test "si la agresion contiene palabras imperdonables es grave" {
@@ -35,8 +35,8 @@ describe "test de Denuncias" {
 
 	}
 
-	test "se crea una denuncia si cumple con los requisitos" {
-		assert.that(roberta.denunciar())
+	test "no se crea una denuncia porque no cumple con los requisitos" {
+		assert.notThat(roberta.denunciar(agresionIgnea))
 
 	}
 }

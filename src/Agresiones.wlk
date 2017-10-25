@@ -17,6 +17,8 @@ class Agresion {
 		return palabras.contains("fuego")
 
 	}
+	
+	method obtenerAgresor() = agresor
 }
 class AgresionFisica inherits Agresion {
 	var elemento
