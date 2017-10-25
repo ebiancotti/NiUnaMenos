@@ -1,24 +1,38 @@
 import Agresiones.*
 
+describe "test de Denuncias"{
+	
+	var agresionGrave
+	var agresionIgnea
+	var agresionFisica
+	var agresionFisicaIgnea
+	
+
+
+fixture{
+	
+	agresionGrave = new Agresion("conur", "brian", [ "perra", "sos" ])
+	agresionIgnea = new Agresion("san martin", "kevin", [ "fuego" ])
+	agresionFisica = new AgresionFisica("paternal", "jony", [ "perra"], "palo")
+	agresionFisicaIgnea = new AgresionFisica("paternal", "jony", [ "perra"], "combustible")
+	
+	}
+
 test "si la agresion contiene palabras imperdonables es grave" {
 
-	var agresion = new Agresion("conur", "brian", [ "perra", "sos" ])
-
-	assert.that(agresion.esGrave())
+	assert.that(agresionGrave.esGrave())
 
 }
 
 test "si la agresion menciona la palabra fuego, es Ignea" {
 
-	var agresion = new Agresion("san martin", "kevin", [ "fuego" ])
-	assert.that(agresion.esIgnea())
+	assert.that(agresionIgnea.esIgnea())
 }
 
 test "si la agresion contiene un elemento, es fisica, y poor lo tanto grave" {
 
-	var agresion = new AgresionFisica("paternal", "jony", [ "perra"
-	], "combustible")
-	assert.that(agresion.esGrave())
+
+	assert.that(agresionFisica.esGrave())
 
 }
-
+}
