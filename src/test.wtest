@@ -2,17 +2,17 @@ import Agresiones.*
 
 test "si la agresion contiene palabras imperdonables es grave" {
 
-	var agresion = new Agresion("conur", "brian", ["perra", "sos"])
-
+	var agresion = new Agresion("conur", "brian", [ "perra", "sos" ])
 
 	assert.that(agresion.esGrave())
 
 }
 
+test "si la agresion menciona la palabra fuego, es Ignea" {
 
-test "si la agresion menciona la palabra fuego, es Ignea"{
-	
-	var agresion = new Agresion("san martin", "kevin", ["fuego"])
+	var agresion = new Agresion("san martin", "kevin", [ "fuego" ])
 	assert.that(agresion.esIgnea())
+}	
+	
 
-}
+
