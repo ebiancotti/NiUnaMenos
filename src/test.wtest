@@ -14,7 +14,7 @@ describe "test de Denuncias" {
 		agresionFisica = new AgresionFisica("paternal", "jony", [ "perra" ], "palo")
 		agresionFisicaIgnea = new AgresionFisica("paternal", "jony", [ "perra"
 		], "combustible") 
-		roberta = new Persona(["pepe","brian", "jose"])
+		roberta = new Persona(["pepe","brian", "jose"], miedosa, 5, 3)
 			}
 
 	test "si la agresion contiene palabras imperdonables es grave" {
