@@ -8,3 +8,11 @@ test "si la agresion contiene palabras imperdonables es grave" {
 	assert.that(agresion.esGrave())
 
 }
+
+
+test "si la agresion menciona la palabra fuego, es Ignea"{
+	
+	var agresion = new Agresion("san martin", "kevin", ["fuego"])
+	assert.that(agresion.esIgnea())
+
+}

@@ -16,6 +16,14 @@ class Agresion {
 	method esGrave(){
 		return palabras.any({unaPalabra => palabrasImperdonables.EsImperdonable(unaPalabra)})
 	}
+	
+	method esIgnea(){
+		return palabras.contains("fuego")
+		
+		
+	}
+	
+	
 }
 
 	object palabrasImperdonables {
