@@ -12,7 +12,13 @@ test "si la agresion menciona la palabra fuego, es Ignea" {
 
 	var agresion = new Agresion("san martin", "kevin", [ "fuego" ])
 	assert.that(agresion.esIgnea())
-}	
-	
+}
 
+test "si la agresion contiene un elemento, es fisica, y poor lo tanto grave" {
+
+	var agresion = new AgresionFisica("paternal", "jony", [ "perra"
+	], "combustible")
+	assert.that(agresion.esGrave())
+
+}
 

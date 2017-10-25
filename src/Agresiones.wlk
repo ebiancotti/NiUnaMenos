@@ -21,12 +21,15 @@ class Agresion {
 class AgresionFisica inherits Agresion {
 	var elemento
 
-	constructor(_lugar, _agresor, _palabras, _elemento) = super ( _lugar ,_agresor , _palabras ) {
+	constructor(_lugar, _agresor, _palabras, _elemento) = super ( _lugar ,
+	_agresor , _palabras ) {
 		elemento = _elemento }
-		
-	
-	
-		
+
+	override method esGrave() = true
+
+	override method esIgnea() {
+		return elemento == "combustible" or super()
+	}
 }
 
 object palabrasImperdonables {
