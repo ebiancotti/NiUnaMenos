@@ -66,6 +66,10 @@ class Persona {
 		self.cambiarPosicion(militante)
 	}
 	
+	method esAcompaniadaPor(persona){
+		self.cambiarPosicion(persona.obtenerPosicionAnteLaVida())
+	}
+	
 }
 	object miedosa {
 

@@ -8,14 +8,16 @@ describe "test de Denuncias" {
 	var agresionFisica
 	var agresionFisicaIgnea
 	var roberta
+	var anacleta
 
 	fixture {
 		agresionGrave = new Agresion("conur", "brian", [ "perra", "sos" ])
 		agresionIgnea = new Agresion("san martin", "kevin", [ "fuego" ])
 		agresionFisica = new AgresionFisica("paternal", "jony", [ "perra" ], "palo")
 		agresionFisicaIgnea = new AgresionFisica("paternal", "jony", [ "perra"
-		], "combustible") roberta = new Persona([ "pepe", "brian", "jose"
-		], miedosa, 1, [ ])
+		], "combustible") 
+		roberta = new Persona([ "pepe", "brian", "jose"], miedosa, 1, [ ])
+		anacleta = new Persona([ "kevin", "jony", "jose"], miedosa, 1, [ ])
 	}
 
 	test "si la agresion contiene palabras imperdonables es grave" {
@@ -116,5 +118,10 @@ describe "test de Denuncias" {
 		
 	}
 	
+	test "cuando roberta es acompañada de anacleta, asume su posición"{
+		
+		roberta.esAcompaniadaPor(anacleta)
+		assert.equals(anacleta.obtenerPosicionAnteLaVida(), roberta.obtenerPosicionAnteLaVida())
+	}
 }
 
