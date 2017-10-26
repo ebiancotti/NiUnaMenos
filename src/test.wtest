@@ -123,5 +123,20 @@ describe "test de Denuncias" {
 		roberta.esAcompaniadaPor(anacleta)
 		assert.equals(anacleta.obtenerPosicionAnteLaVida(), roberta.obtenerPosicionAnteLaVida())
 	}
-}
 
+
+	test "una persona es amenazada de muerte siendo miedosa, nada cambia"{
+		
+		roberta.esAmenazadaDeMuerte()
+		assert.equals(miedosa,roberta.obtenerPosicionAnteLaVida())
+		
+	}
+	
+	test "una persona es amenazada de muerte siendo paciente, se duplica su tolerancia"{
+		
+		roberta.cambiarPosicion(paciente)
+		
+		roberta.esAmenazadaDeMuerte()
+		assert.equals(2,roberta.ObtenerUmbralDeTolerancia())
+	}
+}

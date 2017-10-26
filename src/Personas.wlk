@@ -62,6 +62,10 @@ class Persona {
 
 	}
 	
+	method modificarUmbral(valor){
+		umbralDeTolerancia = valor
+	}
+	
 	method participaEnMarcha(){
 		self.cambiarPosicion(militante)
 	}
@@ -70,10 +74,18 @@ class Persona {
 		self.cambiarPosicion(persona.obtenerPosicionAnteLaVida())
 	}
 	
+	method esAmenazadaDeMuerte(){
+		
+		self.obtenerPosicionAnteLaVida().reaccionAnteAmenaza(self)
+	}
 }
 	object miedosa {
 
 		method DecidirSiDenunciar(persona) = false
+		
+		method reaccionAnteAmenaza(persona) {
+			
+		}
 
 	}
 
@@ -84,6 +96,14 @@ class Persona {
 			persona.ObtenerUmbralDeTolerancia()
 
 		}
+		
+		method reaccionAnteAmenaza(persona){
+			
+			persona.modificarUmbral(persona.ObtenerUmbralDeTolerancia()*2) 
+			
+			
+		}
+		
 	}
 
 	object aguerrida {
