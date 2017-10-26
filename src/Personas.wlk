@@ -61,6 +61,11 @@ class Persona {
 		return agresionesRecibidas.any({agresion => self.agresionGraveDentroDelCirculo(agresion)})
 
 	}
+	
+	method participaEnMarcha(){
+		self.cambiarPosicion(militante)
+	}
+	
 }
 	object miedosa {
 

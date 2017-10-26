@@ -108,6 +108,13 @@ describe "test de Denuncias" {
 		assert.equals(policia.obtenerDenuncia(1),policia.obtenerRegistro().last())
 	}
 	
+	test "roberta va a una marcha y se convierte en una militante"{
+		
+		roberta.participaEnMarcha()
+		
+		assert.equals(roberta.obtenerPosicionAnteLaVida(), militante)
+		
+	}
 	
 }
 
