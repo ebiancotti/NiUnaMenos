@@ -111,12 +111,22 @@ class Persona {
 		method DecidirSiDenunciar(persona) {
 			return persona.FueAgredidaGravementePorFamiliar()
 		}
+		
+		method reaccionAnteAmenaza(persona) {
+			persona.cambiarPosicion(paciente)
+			persona.modificarUmbral(5)
+		}
+		
 	} 
 	
 	object militante {
 		
 		method DecidirSiDenunciar(persona) = true
 		
+		method reaccionAnteAmenaza(persona) {
+			persona.cambiarPosicion(aguerrida)
+			
+		}
 		
 	}
 

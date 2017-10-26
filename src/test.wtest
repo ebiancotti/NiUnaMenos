@@ -139,4 +139,23 @@ describe "test de Denuncias" {
 		roberta.esAmenazadaDeMuerte()
 		assert.equals(2,roberta.ObtenerUmbralDeTolerancia())
 	}
+	
+	test "una persona es amenazada de muerte siendo aguerrida, se convierte en paciente con tolerancia de 5"{
+		
+		roberta.cambiarPosicion(aguerrida)
+		roberta.esAmenazadaDeMuerte()
+		
+		assert.equals(paciente,roberta.obtenerPosicionAnteLaVida())
+		assert.equals(5, roberta.ObtenerUmbralDeTolerancia())
+	
+	}
+	
+	test "una persona es amenazada de muerte siendo militante, se convierte en aguerrida"{
+		
+		roberta.cambiarPosicion(militante)
+		roberta.esAmenazadaDeMuerte()
+		
+		assert.equals(aguerrida,roberta.obtenerPosicionAnteLaVida())
+		
+	}
 }
