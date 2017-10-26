@@ -1,53 +1,90 @@
 
 class Persona {
-
-	var personasDelCirculo = []
+	var personasDelCirculo = [ ]
 	var posicionAnteLaVida
-	var cantidadDeAgresionesPrevias
 	var umbralDeTolerancia
+	var agresionesRecibidas = [ ]
 
-	constructor(_personasDelCirculo, _posicionAnteLaVida, _cantidadDeAgresionesPrevias, _umbralDeTolerancia){
-		personasDelCirculo = _personasDelCirculo
-		posicionAnteLaVida = _posicionAnteLaVida
-		cantidadDeAgresionesPrevias = _cantidadDeAgresionesPrevias
-		umbralDeTolerancia = _umbralDeTolerancia
-		
+	constructor(_personasDelCirculo, _posicionAnteLaVida, _umbralDeTolerancia, _AgresionesRecibidas) {
+		personasDelCirculo = _personasDelCirculo posicionAnteLaVida =
+		_posicionAnteLaVida  umbralDeTolerancia = _umbralDeTolerancia
+		agresionesRecibidas = _AgresionesRecibidas
+	}
+	
+	method cambiarPosicion(posicion){
+		posicionAnteLaVida = posicion
 	}
 
-	method AgregarPersonaAlCirculo(persona){
+	method AgregarPersonaAlCirculo(persona) {
 		personasDelCirculo.add(persona)
+
+	}
+	method esAgredida(agresion) {
+		agresionesRecibidas.add(agresion)
 		
 	}
-	method denunciar(agresion){
-		return (agresion.esGrave() && self.AgresorDentroDelCirculo(agresion)) && posicionAnteLaVida.DecidirSiDenunciar(self)
+	method denunciar(agresion) {
+		return ( agresion.esGrave() && self.AgresorDentroDelCirculo(agresion)  &&
+		posicionAnteLaVida.DecidirSiDenunciar(self))
 	}
 
 	method AgresorDentroDelCirculo(agresion) {
-		return  personasDelCirculo.contains(agresion.obtenerAgresor())
+		return personasDelCirculo.contains(agresion.obtenerAgresor())
 	}
 
-	method obtenerPosicionAnteLaVida(){
+	method obtenerPosicionAnteLaVida() {
 		return posicionAnteLaVida
 	}
-	
-	method obtenerCantidadDeAgresionesPrevias() = cantidadDeAgresionesPrevias
+	method obtenerPersonasDelCirculo() = personasDelCirculo
 
-	method umbralDeTolerancia() = umbralDeTolerancia
+	method obtenerCantidadDeAgresionesPrevias(){
+		return agresionesRecibidas.size()
+	}
 
-}
+	method ObtenerUmbralDeTolerancia() = umbralDeTolerancia
 
-object miedosa{
-	
-	method DecidirSiDenunciar(persona) = false
-
-}
-
-object paciente{
-	
-	
-	
-	method DecidirSiDenunciar(persona){
-		return persona.obtenerCantidadDeAgresionesPrevias() > persona.umbralDeTolerancia()
+	method obtenerAgresionesRecibidas() = agresionesRecibidas
 		
+	method agresionGraveDentroDelCirculo(agresion){
+		return self.AgresorDentroDelCirculo(agresion) && agresion.esGrave()
+	}
+
+	method FueAgredidaGravementePorFamiliar(){
+		
+		return agresionesRecibidas.any({agresion => self.agresionGraveDentroDelCirculo(agresion)})
+
 	}
 }
+	object miedosa {
+
+		method DecidirSiDenunciar(persona) = false
+
+	}
+
+	object paciente {
+
+		method DecidirSiDenunciar(persona) {
+			return persona.obtenerCantidadDeAgresionesPrevias() >
+			persona.ObtenerUmbralDeTolerancia()
+
+		}
+	}
+
+	object aguerrida {
+
+		method DecidirSiDenunciar(persona) {
+			return persona.FueAgredidaGravementePorFamiliar()
+		}
+	} 
+	
+	object militante {
+		
+		method DecidirSiDenunciar(persona) = true
+		
+		
+	}
+
+
+
+
+

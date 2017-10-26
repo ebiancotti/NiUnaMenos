@@ -13,9 +13,9 @@ describe "test de Denuncias" {
 		agresionIgnea = new Agresion("san martin", "kevin", [ "fuego" ])
 		agresionFisica = new AgresionFisica("paternal", "jony", [ "perra" ], "palo")
 		agresionFisicaIgnea = new AgresionFisica("paternal", "jony", [ "perra"
-		], "combustible") 
-		roberta = new Persona(["pepe","brian", "jose"], miedosa, 5, 3)
-			}
+		], "combustible") roberta = new Persona([ "pepe", "brian", "jose"
+		], miedosa, 1, [ ])
+	}
 
 	test "si la agresion contiene palabras imperdonables es grave" {
 
@@ -35,9 +35,67 @@ describe "test de Denuncias" {
 
 	}
 
-	test "no se crea una denuncia porque no cumple con los requisitos" {
-		assert.notThat(roberta.denunciar(agresionIgnea))
+	test "Si la persona es miedosa, nunca se treve a denunciar" {
+		assert.notThat(roberta.denunciar(agresionGrave))
 
+	}
+
+	test
+	"la persona denuncia si es paciente y la cantidad de Agresiones es mayor al umbral de tolerancia"
+	{
+		roberta.cambiarPosicion(paciente)
+		roberta.esAgredida(agresionGrave)
+		roberta.esAgredida(agresionGrave)
+
+		assert.that(roberta.denunciar(agresionGrave))
+
+	}
+
+	test
+	"la persona no denuncia si es paciente y la cantidad de agresiones es menor al umbral"
+	{
+
+		roberta.cambiarPosicion(paciente)
+		roberta.esAgredida(agresionGrave)
+
+		assert.notThat(roberta.denunciar(agresionGrave))
+	}
+
+	test
+	"La persona denuncia si es agerrida y si fue agredida de gravedad previamente por un familiar"
+	{
+
+		roberta.cambiarPosicion(aguerrida)
+		roberta.esAgredida(agresionGrave)
+		assert.that(roberta.denunciar(agresionGrave))
+	}
+
+	test
+	"La persona no denuncia si es agerrida y si fue agredida de gravedad previamente por un familiar"
+	{
+
+		roberta.cambiarPosicion(aguerrida)
+		roberta.esAgredida(agresionFisica)
+		assert.notThat(roberta.denunciar(agresionGrave))
+	}
+
+	test
+	"La persona es militante y denuncia porque la agresion fue grave y producida por un famililar"
+	{
+
+		roberta.cambiarPosicion(militante)
+		roberta.esAgredida(agresionGrave)
+		assert.that(roberta.denunciar(agresionGrave))
+
+	}
+
+	test
+	"La persona es militante y NO denuncia porque la agresion fue grave y producida por un famililar"
+	{
+
+		roberta.cambiarPosicion(militante)
+		roberta.esAgredida(agresionIgnea)
+		assert.notThat(roberta.denunciar(agresionIgnea))
 	}
 }
 
