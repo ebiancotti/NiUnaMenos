@@ -1,3 +1,4 @@
+import Policia.*
 
 class Persona {
 	var personasDelCirculo = [ ]
@@ -23,9 +24,15 @@ class Persona {
 		agresionesRecibidas.add(agresion)
 		
 	}
-	method denunciar(agresion) {
+	method DecideDenunciar(agresion) {
 		return ( agresion.esGrave() && self.AgresorDentroDelCirculo(agresion)  &&
 		posicionAnteLaVida.DecidirSiDenunciar(self))
+	}
+	
+	method denunciar(agresion){
+		policia.registrarDenuncia(agresion,self)
+		
+		
 	}
 
 	method AgresorDentroDelCirculo(agresion) {

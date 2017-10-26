@@ -1,5 +1,6 @@
 import Agresiones.*
 import Personas.*
+import Policia.*
 
 describe "test de Denuncias" {
 	var agresionGrave
@@ -36,7 +37,7 @@ describe "test de Denuncias" {
 	}
 
 	test "Si la persona es miedosa, nunca se treve a denunciar" {
-		assert.notThat(roberta.denunciar(agresionGrave))
+		assert.notThat(roberta.DecideDenunciar(agresionGrave))
 
 	}
 
@@ -47,7 +48,7 @@ describe "test de Denuncias" {
 		roberta.esAgredida(agresionGrave)
 		roberta.esAgredida(agresionGrave)
 
-		assert.that(roberta.denunciar(agresionGrave))
+		assert.that(roberta.DecideDenunciar(agresionGrave))
 
 	}
 
@@ -58,7 +59,7 @@ describe "test de Denuncias" {
 		roberta.cambiarPosicion(paciente)
 		roberta.esAgredida(agresionGrave)
 
-		assert.notThat(roberta.denunciar(agresionGrave))
+		assert.notThat(roberta.DecideDenunciar(agresionGrave))
 	}
 
 	test
@@ -67,7 +68,7 @@ describe "test de Denuncias" {
 
 		roberta.cambiarPosicion(aguerrida)
 		roberta.esAgredida(agresionGrave)
-		assert.that(roberta.denunciar(agresionGrave))
+		assert.that(roberta.DecideDenunciar(agresionGrave))
 	}
 
 	test
@@ -76,7 +77,7 @@ describe "test de Denuncias" {
 
 		roberta.cambiarPosicion(aguerrida)
 		roberta.esAgredida(agresionFisica)
-		assert.notThat(roberta.denunciar(agresionGrave))
+		assert.notThat(roberta.DecideDenunciar(agresionGrave))
 	}
 
 	test
@@ -85,7 +86,7 @@ describe "test de Denuncias" {
 
 		roberta.cambiarPosicion(militante)
 		roberta.esAgredida(agresionGrave)
-		assert.that(roberta.denunciar(agresionGrave))
+		assert.that(roberta.DecideDenunciar(agresionGrave))
 
 	}
 
@@ -95,7 +96,18 @@ describe "test de Denuncias" {
 
 		roberta.cambiarPosicion(militante)
 		roberta.esAgredida(agresionIgnea)
-		assert.notThat(roberta.denunciar(agresionIgnea))
+		assert.notThat(roberta.DecideDenunciar(agresionIgnea))
 	}
+	
+	test "se registra la denuncia de AgresionGrave"{
+		
+		roberta.cambiarPosicion(militante)
+		roberta.esAgredida(agresionGrave)
+		roberta.denunciar(agresionGrave)
+		
+		assert.equals(policia.obtenerDenuncia(1),policia.obtenerRegistro().last())
+	}
+	
+	
 }
 
